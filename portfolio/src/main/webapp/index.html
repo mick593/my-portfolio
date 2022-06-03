@@ -4,28 +4,46 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
   </head>
   <body>
-    <div id="content">
+    <div class="tab">
+        <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'about-me')">About me</button>
+        <button class="tablinks" onclick="openTab(event, 'blog')">NFT Blog</button>
+        <button class="tablinks" onclick="openTab(event, 'terminal')">Terminal</button>
+    </div>
+    <div id="about-me" class = "tabcontent">
       <h1>Mick Toyingsirikul</h1>
       <img src="./images/doodle.png" alt = "Avatar picture"/>
       <p>Hello 👋! My name is Mick, I'm a 4th year CS student at the University of British Columbia.</p>
       <p>My interests are Computer Systems, Algorithms, and Database Systems.  Apart from school, I'm a stock investor.  
           Recently, I start trading/learning crypto and NFT.</p>
       <p>Currently, I'm looking for a Software Engineer internship.</p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
       <p>Contact Me</p>
-      <a href="https://github.com/mick593">GitHub</a>
-      <a href="https://www.linkedin.com/in/mick-toyingsirikul-8385a223b/">Linkedin</a>
+      <a href="https://github.com/mick593" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/mick-toyingsirikul-8385a223b/" target="_blank">Linkedin</a>
 
     </div>
-    <div id="content">
+    <div id="blog" class = "tabcontent">
         <h1>NFT Blog</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo deserunt dolor amet, rem earum ex deleniti praesentium minus dolores, quidem reiciendis alias cumque rerum tempore quod officiis tenetur voluptas optio!</p>
+        <a href="https://opensea.io/assets/ethereum/0x248139afb8d3a2e16154fbe4fb528a3a214fd8e7/780" target="_blank">
+            <img src="/images/myNFT.png" alt= "Boki#1716"/>
+        </a>
+        
+        <h2>My first NFT!</h2>
+        <p>This is my first purchase of NFT from a project called "<a href="https://opensea.io/collection/bokinftofficial" target="_blank">Boki</a>"</p>
+        <p>Reasons why I purchased this:</p>
+        <ul>
+            <li>I like the style from this project. [It is really important to like the picture itself! In case the price drop to nothing, you can still use it for your profile picture.]</li>
+            <li>Have similar style to <a href="https://opensea.io/collection/doodles-official" target="_blank">Doodles</a> which is success in term of price growth. </li>
+            <li>Community size is pretty large.  There are 100k+ followers on <a href="https://twitter.com/BokiNFT" target="_blank">Twitter</a>. This is one of factors for NFT growth.</li>
+            <li>Most important about NFT/Crypto, don't put in amount of money that you can't afford to lose!  The entry price for me is pretty low, so I don't really care if this project will be success or not.</li>
+        </ul>
     </div>
+    <div id="terminal" class="tabcontent">
+        <p>$> TBD</p>
+    </div>
+    <script src="script.js"></script>
   </body>
+  
 </html>
