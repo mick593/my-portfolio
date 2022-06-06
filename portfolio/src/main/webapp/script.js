@@ -28,7 +28,7 @@ function addRandomGreeting() {
   }
   
     // mainly get the content from w3schools
-  function openTab(evt, tabName) {
+function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
 
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -42,7 +42,14 @@ function addRandomGreeting() {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+}
 
+async function showGreeting() {
+    const response = await fetch('/hello');
+    const textResponse = await response.text();
+
+    const msgContainer = document.getElementById("hello-content");
+    msgContainer.innerText = textResponse;
+}
 
   document.getElementById("defaultOpen").click();
