@@ -48,8 +48,19 @@ async function showGreeting() {
     const response = await fetch('/hello');
     const textResponse = await response.text();
 
-    const msgContainer = document.getElementById("hello-content");
+    const msgContainer = document.getElementById("message-box");
     msgContainer.innerText = textResponse;
 }
 
-  document.getElementById("defaultOpen").click();
+async function randomGreeting() {
+    const response = await fetch('/rand-hello');
+    const textResponse = await response.json();
+    let choose = Math.floor(Math.random() * textResponse.length);
+    const msgContainer = document.getElementById("message-box");
+    msgContainer.innerText = textResponse[choose];
+}
+
+
+
+
+document.getElementById("defaultOpen").click();
