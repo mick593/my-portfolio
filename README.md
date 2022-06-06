@@ -1,6 +1,7 @@
 # Google Software Product Sprint
 
 This repo contains Mick's portfolio and SPS projects.
+[Click](https://mtoyingsirikul-sps-summer22.appspot.com/) to access my page!
 
 To get started:
 
