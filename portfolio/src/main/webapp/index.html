@@ -37,12 +37,23 @@
             <li>Most important about NFT/Crypto, don't put in amount of money that you can't afford to lose!  The entry price for me is pretty low, so I don't really care if this project will be success or not.</li>
         </ul>
     </div>
-    <div id="footer-container">
-        <a href="/hello">Hello</a>
-        <button onclick="showGreeting();">Greeting!</button>
-        <button onclick="randomGreeting();">Random Greeting!</button>
-        <p id="message-box"></p>
+
+    <div id = "right-pop-up-item">
+        <img src="./images/paper.png" alt="mail-icon" id="mail-icon" onclick="swapFormVisibility();">
     </div>
+
+    <div id = "form-container">
+        <form id = "form-email" action="/form-handler" method="POST">
+            <p>Leave a message to me:</p>
+            <textarea name="name-input">Your name</textarea>
+            <textarea name="email-input">Your email</textarea>
+            <textarea name="text-input">Leave a message here!</textarea>
+            <br/>
+            <input type="submit" />
+        </form>
+    </div>
+
+    
     
   </body>
   

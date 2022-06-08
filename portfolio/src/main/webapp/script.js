@@ -59,8 +59,18 @@ async function randomGreeting() {
     const msgContainer = document.getElementById("message-box");
     msgContainer.innerText = textResponse[choose];
 }
+let formVisibility = false;
+function swapFormVisibility() {
+    formVisibility = !formVisibility;
+    if(formVisibility) {
+        let form = document.getElementById("form-container");
+        form.style.display = "none";
 
-
+    } else {
+        let form = document.getElementById("form-container");
+        form.style.display = "block";
+    }
+}
 
 
 document.getElementById("defaultOpen").click();
