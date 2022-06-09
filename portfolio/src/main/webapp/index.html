@@ -43,11 +43,11 @@
     </div>
 
     <div id = "form-container">
-        <form id = "form-email" action="/form-handler" method="POST">
+        <form id = "form-box" action="/form-handler" method="POST">
             <p>Leave a message to me:</p>
-            <textarea name="name-input">Your name</textarea>
-            <textarea name="email-input">Your email</textarea>
-            <textarea name="text-input">Leave a message here!</textarea>
+            <textarea name="name-input" placeholder="Name" required></textarea>
+            <textarea name="email-input" placeholder="Email" required></textarea>
+            <textarea name="text-input" placeholder="Mesaage" required></textarea>
             <br/>
             <input type="submit" />
         </form>

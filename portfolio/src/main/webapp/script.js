@@ -60,15 +60,17 @@ async function randomGreeting() {
     msgContainer.innerText = textResponse[choose];
 }
 let formVisibility = false;
+let form = document.getElementById("form-container");
+form.style.display = "none";
 function swapFormVisibility() {
     formVisibility = !formVisibility;
+    // show form
     if(formVisibility) {
         let form = document.getElementById("form-container");
-        form.style.display = "none";
-
-    } else {
-        let form = document.getElementById("form-container");
         form.style.display = "block";
+    } else {    // hide
+        let form = document.getElementById("form-container");
+        form.style.display = "none";
     }
 }
 
