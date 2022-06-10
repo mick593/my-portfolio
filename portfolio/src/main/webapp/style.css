@@ -66,6 +66,10 @@ img {
 
 }
 
+#right-pop-up-item:hover {
+    cursor: pointer;
+}
+
 body {
     display: block;
     margin: 8px;
