@@ -20,7 +20,7 @@ public class FormHandlerServlet extends HttpServlet {
     // Print the value so you can see it in the server logs.
     System.out.println("New user #" + count + " info: " + name + " " + email + " " + textValue);
     count+=1;
-    // Go back to the home page
+    // redirect to meme song on youtube.com
     response.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 
   }
