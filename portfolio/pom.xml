@@ -18,7 +18,17 @@
     <exec.mainClass>com.google.sps.ServerMain</exec.mainClass>
     <googleCloudProjectId>mtoyingsirikul-sps-summer22</googleCloudProjectId>
   </properties>
-
+<!-- <dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>libraries-bom</artifactId>
+      <version>25.4.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement> -->
   <dependencies>
     <!-- Java Servlets API -->
     <dependency>
@@ -44,12 +54,20 @@
       <artifactId>gson</artifactId>
       <version>2.9.0</version>
     </dependency>
+    <!-- Datastore -->
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-datastore</artifactId>
+      <version>1.104.0</version>
+    </dependency>
     <!-- Cloud Language -->
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-language</artifactId>
       <version>1.55.0</version>
     </dependency>  
+
+    
   </dependencies>
 
   <build>
