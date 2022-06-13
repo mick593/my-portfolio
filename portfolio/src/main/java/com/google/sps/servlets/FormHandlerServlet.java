@@ -6,9 +6,9 @@ import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.IncompleteKey;
 import com.google.cloud.datastore.KeyFactory;
-// import com.google.cloud.language.v1.Document;
-// import com.google.cloud.language.v1.LanguageServiceClient;
-// import com.google.cloud.language.v1.Sentiment;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,12 @@ public class FormHandlerServlet extends HttpServlet {
     String email = request.getParameter("email-input");
     String textValue = request.getParameter("text-input");
     long timestamp = System.currentTimeMillis();
-
+    Document doc =
+    Document.newBuilder().setContent("textValue").setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
 
     // store a message to the database.
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();

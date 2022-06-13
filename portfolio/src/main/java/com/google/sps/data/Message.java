@@ -1,4 +1,4 @@
-package data;
+package com.google.sps.data;
 public class Message {
     private final String name;
     private final String email;

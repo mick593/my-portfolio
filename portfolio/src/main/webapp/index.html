@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
     
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="tab">
         <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'about-me')">About me</button>
         <button class="tablinks" onclick="openTab(event, 'blog')">NFT Blog</button>
+        <button class="tablinks" onclick="openTab(event, 'chat-wall')">Chat</button>
     </div>
     <div id="about-me" class = "tabcontent">
       <h1>Mick Toyingsirikul</h1>
@@ -37,7 +37,9 @@
             <li>Most important about NFT/Crypto, don't put in amount of money that you can't afford to lose!  The entry price for me is pretty low, so I don't really care if this project will be success or not.</li>
         </ul>
     </div>
-
+    <div id="chat-wall" class = "tabcontent">
+        
+    </div>
     <div id = "right-pop-up-item">
         <img src="./images/paper.png" alt="mail-icon" id="mail-icon" onclick="swapFormVisibility();">
     </div>
@@ -52,9 +54,12 @@
             <input type="submit" />
         </form>
     </div>
+    <div id = "chat-form-container">
+        <input type="text" id="chat-input" name="text"><br><br>
+        <button onclick="processTextInput()">send</button>
+    </div>
 
-    
-    
+    <script src="script.js" defer></script>
   </body>
   
 </html>

@@ -59,6 +59,35 @@ async function randomGreeting() {
     const msgContainer = document.getElementById("message-box");
     msgContainer.innerText = textResponse[choose];
 }
+function processTextInput() {
+    let val = document.getElementById("chat-input").value;
+    if(!val){
+        console.log('no input');
+    }else{
+        handleSendText(val);
+    }
+  }
+
+async function handleSendText(msg) {
+    console.log(msg);
+    let response = await fetch('/chat?' + new URLSearchParams({
+        text: msg,
+    }), {method : "POST"})
+    const textResponse = await response.json();
+    console.log(textResponse);
+    updateChatWall();
+    
+}
+
+async function updateChatWall(){
+    let response = await fetch('/chat')
+    const textResponse = await response.json();
+    deleteWall();
+    textResponse.forEach(function (item, index) {
+        addText(item);
+      });
+    
+}
 let formVisibility = false;
 let form = document.getElementById("form-container");
 form.style.display = "none";
@@ -73,6 +102,21 @@ function swapFormVisibility() {
         form.style.display = "none";
     }
 }
-
-
+setInterval(updateChatWall, 1000);
 document.getElementById("defaultOpen").click();
+function addText(msg){
+    let e = document.createElement('p');
+    e.innerText = msg;
+    document.getElementById("chat-wall").appendChild(e);
+}
+
+function deleteWall(){
+    
+    let e = document.getElementById("chat-wall");
+    //e.firstElementChild can be used.
+    var child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+}
