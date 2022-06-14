@@ -14,12 +14,6 @@ public class HelloWorldServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Document doc =
-    Document.newBuilder().setContent("textValue").setType(Document.Type.PLAIN_TEXT).build();
-    LanguageServiceClient languageService = LanguageServiceClient.create();
-    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
-    float score = sentiment.getScore();
-    languageService.close();
     response.setContentType("text/html;");
     response.getWriter().println("<h1>Hello Mick!</h1>");
   }

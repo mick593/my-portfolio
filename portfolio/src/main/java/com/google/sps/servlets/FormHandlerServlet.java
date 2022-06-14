@@ -27,12 +27,13 @@ public class FormHandlerServlet extends HttpServlet {
     String textValue = request.getParameter("text-input");
     long timestamp = System.currentTimeMillis();
     Document doc =
-    Document.newBuilder().setContent("textValue").setType(Document.Type.PLAIN_TEXT).build();
+    Document.newBuilder().setContent(textValue).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     float score = sentiment.getScore();
     languageService.close();
-
+    // if message content is not negative
+    if(score > 0) {
     // store a message to the database.
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Message");
@@ -44,8 +45,7 @@ public class FormHandlerServlet extends HttpServlet {
             .set("timestamp", timestamp)
             .build();
     datastore.put(msg);
-    
-    
+    }
     // redirect to meme song on youtube.com
     response.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 

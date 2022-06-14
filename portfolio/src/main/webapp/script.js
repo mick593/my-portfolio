@@ -59,6 +59,7 @@ async function randomGreeting() {
     const msgContainer = document.getElementById("message-box");
     msgContainer.innerText = textResponse[choose];
 }
+// send text to server and update to the chat wall
 function processTextInput() {
     let val = document.getElementById("chat-input").value;
     if(!val){
@@ -67,7 +68,7 @@ function processTextInput() {
         handleSendText(val);
     }
   }
-
+// helper function for sending text
 async function handleSendText(msg) {
     console.log(msg);
     let response = await fetch('/chat?' + new URLSearchParams({
@@ -78,7 +79,7 @@ async function handleSendText(msg) {
     updateChatWall();
     
 }
-
+// delete every text on chat wall and rewrite
 async function updateChatWall(){
     let response = await fetch('/chat')
     const textResponse = await response.json();
@@ -102,6 +103,7 @@ function swapFormVisibility() {
         form.style.display = "none";
     }
 }
+// update chat every 1 second
 setInterval(updateChatWall, 1000);
 document.getElementById("defaultOpen").click();
 function addText(msg){
@@ -109,7 +111,7 @@ function addText(msg){
     e.innerText = msg;
     document.getElementById("chat-wall").appendChild(e);
 }
-
+// delete every text on chat wall
 function deleteWall(){
     
     let e = document.getElementById("chat-wall");

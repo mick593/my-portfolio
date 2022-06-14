@@ -54,18 +54,27 @@
       <artifactId>gson</artifactId>
       <version>2.9.0</version>
     </dependency>
-    <!-- Datastore -->
     <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-datastore</artifactId>
-      <version>1.104.0</version>
-    </dependency>
-    <!-- Cloud Language -->
-    <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-language</artifactId>
-      <version>1.55.0</version>
-    </dependency> 
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-datastore</artifactId>
+  <version>1.104.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-vision</artifactId>
+  <version>1.100.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-language</artifactId>
+  <version>1.55.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-translate</artifactId>
+  <version>1.70.0</version>
+</dependency>
+
 
     
   </dependencies>
