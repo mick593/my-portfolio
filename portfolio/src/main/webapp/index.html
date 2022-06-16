@@ -38,6 +38,12 @@
         </ul>
     </div>
     <div id="chat-wall" class = "tabcontent">
+        <div id = "chat-form-container">
+            <input type="text" id="chat-input" name="text"><br><br>
+            <button onclick="processTextInput()">send</button>
+        </div>
+        <button onclick="refreshChatWall();">refresh</button>
+        <div id ="chat-wall-text-area"></div>
         
     </div>
     <div id = "right-pop-up-item">
@@ -54,10 +60,7 @@
             <input type="submit" />
         </form>
     </div>
-    <div id = "chat-form-container">
-        <input type="text" id="chat-input" name="text"><br><br>
-        <button onclick="processTextInput()">send</button>
-    </div>
+
 
     <script src="script.js" defer></script>
   </body>

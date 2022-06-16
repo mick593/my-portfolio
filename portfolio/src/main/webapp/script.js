@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+let formVisibility;
+
+
 /**
  * Adds a random greeting to the page.
  */
@@ -71,27 +74,24 @@ function processTextInput() {
 // helper function for sending text
 async function handleSendText(msg) {
     console.log(msg);
-    let response = await fetch('/chat?' + new URLSearchParams({
+    await fetch('/chat?' + new URLSearchParams({
         text: msg,
     }), {method : "POST"})
-    const textResponse = await response.json();
-    console.log(textResponse);
-    updateChatWall();
+    //add recent text to the wall
+    addText(msg);
     
 }
 // delete every text on chat wall and rewrite
-async function updateChatWall(){
+async function refreshChatWall(){
     let response = await fetch('/chat')
     const textResponse = await response.json();
     deleteWall();
-    textResponse.forEach(function (item, index) {
-        addText(item);
-      });
+    for(let i = textResponse.length - 1; i >= 0; i--) {
+        addText(textResponse[i]["text"]);
+    }
     
 }
-let formVisibility = false;
-let form = document.getElementById("form-container");
-form.style.display = "none";
+
 function swapFormVisibility() {
     formVisibility = !formVisibility;
     // show form
@@ -103,18 +103,18 @@ function swapFormVisibility() {
         form.style.display = "none";
     }
 }
-// update chat every 1 second
-setInterval(updateChatWall, 1000);
-document.getElementById("defaultOpen").click();
+// // update chat every 1 second
+// setInterval(updateChatWall, 5000);
+
 function addText(msg){
     let e = document.createElement('p');
     e.innerText = msg;
-    document.getElementById("chat-wall").appendChild(e);
+    document.getElementById("chat-wall-text-area").appendChild(e);
 }
 // delete every text on chat wall
 function deleteWall(){
     
-    let e = document.getElementById("chat-wall");
+    let e = document.getElementById("chat-wall-text-area");
     //e.firstElementChild can be used.
     var child = e.lastElementChild; 
     while (child) {
@@ -122,3 +122,17 @@ function deleteWall(){
         child = e.lastElementChild;
     }
 }
+
+function init() {
+    // hide email form
+    formVisibility = false;
+    let form = document.getElementById("form-container");
+    form.style.display = "none";
+    // open default tab
+    document.getElementById("defaultOpen").click();
+    // refresh chat wall
+    refreshChatWall();
+}
+
+
+init();
