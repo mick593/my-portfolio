@@ -98,3 +98,13 @@ body {
 body {
     height: 105vh;    
 }
+
+#chat-wall {
+    background-color: #ffff99;
+    height: 80%;
+    width: 75%;
+}
+
+#chat-wall-text-area {
+    height: 80%;
+}

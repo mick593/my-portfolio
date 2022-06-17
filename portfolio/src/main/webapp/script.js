@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+let formVisibility;
+
+
 /**
  * Adds a random greeting to the page.
  */
@@ -59,9 +62,36 @@ async function randomGreeting() {
     const msgContainer = document.getElementById("message-box");
     msgContainer.innerText = textResponse[choose];
 }
-let formVisibility = false;
-let form = document.getElementById("form-container");
-form.style.display = "none";
+// send text to server and update to the chat wall
+function processTextInput() {
+    let val = document.getElementById("chat-input").value;
+    if(!val){
+        console.log('no input');
+    }else{
+        handleSendText(val);
+    }
+  }
+// helper function for sending text
+async function handleSendText(msg) {
+    console.log(msg);
+    await fetch('/chat?' + new URLSearchParams({
+        text: msg,
+    }), {method : "POST"})
+    //add recent text to the wall
+    addText(msg);
+    
+}
+// delete every text on chat wall and rewrite
+async function refreshChatWall(){
+    let response = await fetch('/chat')
+    const textResponse = await response.json();
+    deleteWall();
+    for(let i = textResponse.length - 1; i >= 0; i--) {
+        addText(textResponse[i]["text"]);
+    }
+    
+}
+
 function swapFormVisibility() {
     formVisibility = !formVisibility;
     // show form
@@ -74,5 +104,33 @@ function swapFormVisibility() {
     }
 }
 
+function addText(msg){
+    let e = document.createElement('p');
+    e.innerText = msg;
+    document.getElementById("chat-wall-text-area").appendChild(e);
+}
+// delete every text on chat wall
+function deleteWall(){
+    
+    let e = document.getElementById("chat-wall-text-area");
+    //e.firstElementChild can be used.
+    var child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+}
 
-document.getElementById("defaultOpen").click();
+function init() {
+    // hide email form
+    formVisibility = false;
+    let form = document.getElementById("form-container");
+    form.style.display = "none";
+    // open default tab
+    document.getElementById("defaultOpen").click();
+    // refresh chat wall
+    refreshChatWall();
+}
+
+
+init();
