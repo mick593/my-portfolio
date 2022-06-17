@@ -103,8 +103,6 @@ function swapFormVisibility() {
         form.style.display = "none";
     }
 }
-// // update chat every 1 second
-// setInterval(updateChatWall, 5000);
 
 function addText(msg){
     let e = document.createElement('p');

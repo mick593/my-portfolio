@@ -25,10 +25,7 @@ import com.google.sps.data.ChatResponse;
 /** Handles requests sent to the /hello URL. Try running a server and navigating to /hello! */
 @WebServlet("/chat")
 public class ChatRecorderServlet extends HttpServlet {
-    // ArrayList<String> messages;
-    public ChatRecorderServlet() {
-        //
-    }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
@@ -56,8 +53,6 @@ public class ChatRecorderServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String text = request.getParameter("text");
     Timestamp timestamp = Timestamp.now();
-    // doGet(request, response);
-
 
     // store a message to the database.
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
